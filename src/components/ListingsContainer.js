@@ -1,23 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import ListingCard from "./ListingCard";
 
-function ListingsContainer() {
-  const [listings, setListings] = useState([]);
+function ListingsContainer({ listings }) {
 
-    useEffect(() => {
-      fetch("http://localhost:6001/listings")
-      .then(res => res.json())
-      .then(listings => setListings(listings))
-    }, [])
+//   function handleDeleteListing(id) {
+//     fetch(`http://localhost:6001/listings/${id}`, {
+//       method: "DELETE",
+//     })
+//     .then(res => res.json())
+//     .then(() => {
+//     const updatedListings = listings.filter(listing => listing.id !== id);
+//     setListings(updatedListings);
+//   })
+// }
 
-    const listItems = listings.map(listing => (
-      <ListingCard 
-      key={listing.id}
-      description={listing.description}
-      image={listing.image}
-      location={listing.location}
-      />
-    ));
+const listItems = listings.map(listing => (
+  <ListingCard 
+  listing={listing}
+  key={listing.id}
+  description={listing.description}
+  image={listing.image}
+  location={listing.location}
+  // onDeleteListing={handleDeleteListing}
+  />
+));
 
   return (
     <main>
