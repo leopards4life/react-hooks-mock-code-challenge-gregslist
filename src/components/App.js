@@ -28,7 +28,8 @@ const displayedListings = listings.filter(listing =>
   return (
     <div className="app">
       <Header 
-      onSearch={setSearch}/>
+      onSearch={setSearch}
+      search={search}/>
       <ListingsContainer 
       listings={displayedListings}
       onDeleteListing={handleDeleteListing}
