@@ -1,18 +1,7 @@
 import React from "react";
 import ListingCard from "./ListingCard";
 
-function ListingsContainer({ listings }) {
-
-//   function handleDeleteListing(id) {
-//     fetch(`http://localhost:6001/listings/${id}`, {
-//       method: "DELETE",
-//     })
-//     .then(res => res.json())
-//     .then(() => {
-//     const updatedListings = listings.filter(listing => listing.id !== id);
-//     setListings(updatedListings);
-//   })
-// }
+function ListingsContainer({ listings, onDeleteListing }) {
 
 const listItems = listings.map(listing => (
   <ListingCard 
@@ -21,7 +10,7 @@ const listItems = listings.map(listing => (
   description={listing.description}
   image={listing.image}
   location={listing.location}
-  // onDeleteListing={handleDeleteListing}
+  onDeleteListing={onDeleteListing}
   />
 ));
 

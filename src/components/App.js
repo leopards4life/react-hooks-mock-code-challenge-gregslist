@@ -12,11 +12,24 @@ useEffect(() => {
   .then(listings => setListings(listings))
 }, [])
 
+function handleDeleteListing(id) {
+  fetch(`http://localhost:6001/listings/${id}`, {
+    method: "DELETE",
+  })
+  .then(res => res.json())
+  .then(() => {
+  const updatedListings = listings.filter(listing => listing.id !== id);
+  setListings(updatedListings);
+})
+}
+
   return (
     <div className="app">
-      <Header />
+      <Header 
+      listings={listings}/>
       <ListingsContainer 
       listings={listings}
+      onDeleteListing={handleDeleteListing}
       />
     </div>
   );

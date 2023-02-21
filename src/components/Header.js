@@ -1,7 +1,8 @@
 import React from "react";
 import Search from "./Search";
 
-function Header() {
+function Header({ listings }) {
+  console.log(listings)
   return (
     <header>
       <h1>
