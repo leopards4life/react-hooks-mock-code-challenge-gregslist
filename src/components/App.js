@@ -3,8 +3,8 @@ import Header from "./Header";
 import ListingsContainer from "./ListingsContainer";
 
 function App() {
-
 const [listings, setListings] = useState([]);
+const [search, setSearch] = useState("");
 
 useEffect(() => {
   fetch("http://localhost:6001/listings")
@@ -22,13 +22,15 @@ function handleDeleteListing(id) {
   setListings(updatedListings);
 })
 }
+const displayedListings = listings.filter(listing => 
+  listing.description.toLowerCase().includes(search.toLowerCase()));
 
   return (
     <div className="app">
       <Header 
-      listings={listings}/>
+      onSearch={setSearch}/>
       <ListingsContainer 
-      listings={listings}
+      listings={displayedListings}
       onDeleteListing={handleDeleteListing}
       />
     </div>
